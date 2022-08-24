@@ -1,0 +1,22 @@
+class Solution(object):
+    def groupAnagrams(self, strs):
+        '''
+        INPUT: string array
+        OUTPUT: array of string arrays, each grouped by anagrams
+        SOLUTION:
+        
+        we need a method to check whether two strings are anagrams,
+        we also need a method to group related strings together
+        
+        '''
+        
+        stringDictionary = dict()
+        
+        for string in strs:
+            sortedString = ''.join(sorted(string))
+            if sortedString in stringDictionary:
+                stringDictionary[sortedString] += [string]
+            else:
+                stringDictionary[sortedString] = [string]
+        
+        return stringDictionary.values()
